@@ -25,7 +25,7 @@ class GameOverScene: SKScene {
         
         let scoreMessage = "Score: \(score)"
         
-        let scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        let scoreLabel = SKLabelNode(fontNamed: "Arial Rounded MT Bold")
         scoreLabel.text = scoreMessage
         scoreLabel.fontSize = 40
         scoreLabel.fontColor = SKColor.black
@@ -42,14 +42,14 @@ class GameOverScene: SKScene {
             }
         }
         
-        let highscoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        let highscoreLabel = SKLabelNode(fontNamed: "Arial Rounded MT Bold")
         highscoreLabel.text = "Best \(best!)"
         highscoreLabel.fontSize = 20
         highscoreLabel.fontColor = SKColor.black
         highscoreLabel.position = CGPoint(x: size.width/2, y: scoreLabel.position.y - scoreLabel.frame.size.height)
         addChild(highscoreLabel)
         
-        let replayLabel = SKLabelNode(fontNamed: "Chalkduster")
+        let replayLabel = SKLabelNode(fontNamed: "Arial Rounded MT Bold")
         replayLabel.text = "Replay"
         replayLabel.fontSize = 40
         replayLabel.fontColor = SKColor.black
@@ -60,9 +60,9 @@ class GameOverScene: SKScene {
         run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addDogLeft),
-                SKAction.wait(forDuration: 6.0),
+                SKAction.wait(forDuration: 5.0),
                 SKAction.run(addDogRight),
-                SKAction.wait(forDuration: 6.0)
+                SKAction.wait(forDuration: 5.0)
                 ])
         ))
 

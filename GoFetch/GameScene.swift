@@ -32,7 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bgNode.position = CGPoint(x: bgNode.size.width/2, y: bgNode.size.height/2)
         addChild(bgNode)
         
-        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel = SKLabelNode(fontNamed: "Arial Rounded MT Bold")
         scoreLabel.text = "\(score)"
         scoreLabel.fontSize = 40
         scoreLabel.position = CGPoint(x: size.width/2, y: size.height - 3*scoreLabel.frame.size.height)

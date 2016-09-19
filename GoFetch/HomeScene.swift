@@ -21,15 +21,15 @@ class HomeScene: SKScene {
         bgNode.position = CGPoint(x: bgNode.size.width/2, y: bgNode.size.height/2)
         addChild(bgNode)
         
-        nameLabel = SKLabelNode(fontNamed: "Chalkduster")
+        nameLabel = SKLabelNode(fontNamed: "Arial Rounded MT Bold")
         nameLabel.text = "Go Fetch!"
-        nameLabel.fontSize = 40
+        nameLabel.fontSize = 60
         nameLabel.position = CGPoint(x: size.width/2, y: size.height*2/3)
         nameLabel.fontColor = SKColor.black
         nameLabel.zPosition = 10
         self.addChild(nameLabel)
         
-        let playLabel = SKLabelNode(fontNamed: "Chalkduster")
+        let playLabel = SKLabelNode(fontNamed: "Arial Rounded MT Bold")
         playLabel.text = "Play"
         playLabel.fontSize = 40
         playLabel.fontColor = SKColor.black
@@ -40,9 +40,9 @@ class HomeScene: SKScene {
         run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addDogLeft),
-                SKAction.wait(forDuration: 6.0),
+                SKAction.wait(forDuration: 5.0),
                 SKAction.run(addDogRight),
-                SKAction.wait(forDuration: 6.0)
+                SKAction.wait(forDuration: 5.0)
                 ])
         ))
         
