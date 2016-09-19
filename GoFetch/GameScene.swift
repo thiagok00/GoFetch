@@ -171,7 +171,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         catchedBalls = catchedBalls + 1
         scoreLabel.text = "\(catchedBalls)"
-
+        
+        
+        //PARTICULAS !!!
+        //abre o arquivo sks
+        let path = Bundle.main.path(forResource: "HearthParticle", ofType: "sks")
+        let hearthParticle = NSKeyedUnarchiver.unarchiveObject(withFile: path!) as! SKEmitterNode
+        
+        //posicao e tamanho
+        hearthParticle.targetNode = self.scene
+        hearthParticle.position = dog.position
+        hearthParticle.xScale = 0.3
+        hearthParticle.yScale = 0.3
+        //maximo de coracoes
+        hearthParticle.numParticlesToEmit = 10
+        
+        self.addChild(hearthParticle)
+        
+        //da remove parente do emitter pra nao ficar deixando nodes atoa na tela
+        let removeHearths = SKAction.sequence([SKAction.wait(forDuration: 2.0), SKAction.run({ hearthParticle.removeFromParent()})])
+        run(removeHearths)
         
     }
     

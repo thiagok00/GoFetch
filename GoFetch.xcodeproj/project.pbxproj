@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D09EBCEA1D9018B2002C55D8 /* HearthParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = D09EBCE91D9018B2002C55D8 /* HearthParticle.sks */; };
 		D0B9597D1D8F3E5000EB598A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9597C1D8F3E5000EB598A /* AppDelegate.swift */; };
 		D0B959831D8F3E5000EB598A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B959821D8F3E5000EB598A /* GameScene.swift */; };
 		D0B959851D8F3E5000EB598A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B959841D8F3E5000EB598A /* GameViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D09EBCE91D9018B2002C55D8 /* HearthParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HearthParticle.sks; sourceTree = "<group>"; };
 		D0B959791D8F3E5000EB598A /* GoFetch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoFetch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B9597C1D8F3E5000EB598A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B959821D8F3E5000EB598A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		D0B9597B1D8F3E5000EB598A /* GoFetch */ = {
 			isa = PBXGroup;
 			children = (
+				D09EBCE91D9018B2002C55D8 /* HearthParticle.sks */,
 				D0B9597C1D8F3E5000EB598A /* AppDelegate.swift */,
 				D0B959821D8F3E5000EB598A /* GameScene.swift */,
 				D0B9599B1D8F560800EB598A /* GameOverScene.swift */,
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0B959881D8F3E5000EB598A /* Main.storyboard in Resources */,
+				D09EBCEA1D9018B2002C55D8 /* HearthParticle.sks in Resources */,
 				D0B9599A1D8F541B00EB598A /* woof.mp3 in Resources */,
 				D0B9598A1D8F3E5000EB598A /* Assets.xcassets in Resources */,
 				D0B9598D1D8F3E5000EB598A /* LaunchScreen.storyboard in Resources */,
@@ -320,6 +324,7 @@
 				D0B959931D8F3E5000EB598A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
