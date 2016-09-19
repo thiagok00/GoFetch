@@ -16,6 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let hasLaunchedKey = "HasLaunched"
+        let defaults = UserDefaults.standard
+        let hasLaunched = defaults.bool(forKey: hasLaunchedKey)
+        
+        if !hasLaunched {
+            
+            //Executed only on first run
+            
+            defaults.set(true, forKey: hasLaunchedKey)
+            defaults.set(0, forKey: "highscore")
+        }
+        
         return true
     }
 

@@ -13,6 +13,8 @@ class GameOverScene: SKScene {
     
     init(size: CGSize, score:Int) {
         
+        var best: Int!
+        
         super.init(size: size)
         
         let bgNode = SKSpriteNode(imageNamed: "Grass")
@@ -21,15 +23,39 @@ class GameOverScene: SKScene {
         bgNode.position = CGPoint(x: bgNode.size.width/2, y: bgNode.size.height/2)
         addChild(bgNode)
         
-        let message = "Score: \(score)"
+        let scoreMessage = "Score: \(score)"
         
-        let label = SKLabelNode(fontNamed: "Chalkduster")
-        label.text = message
-        label.fontSize = 40
-        label.fontColor = SKColor.black
-        label.position = CGPoint(x: size.width/2, y: size.height/2)
-        addChild(label)
-        label.name = "Replay"
+        let scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.text = scoreMessage
+        scoreLabel.fontSize = 40
+        scoreLabel.fontColor = SKColor.black
+        scoreLabel.position = CGPoint(x: size.width/2, y: size.height/2)
+        addChild(scoreLabel)
+        
+        //Sets Highscore
+        let defaults = UserDefaults.standard
+        if let highscore = defaults.string(forKey: "highscore") {
+            best = Int(highscore)
+            if score > Int(highscore)! {
+                defaults.set(score, forKey: "highscore")
+                best = score
+            }
+        }
+        
+        let highscoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        highscoreLabel.text = "Best \(best!)"
+        highscoreLabel.fontSize = 20
+        highscoreLabel.fontColor = SKColor.black
+        highscoreLabel.position = CGPoint(x: size.width/2, y: scoreLabel.position.y - scoreLabel.frame.size.height)
+        addChild(highscoreLabel)
+        
+        let replayLabel = SKLabelNode(fontNamed: "Chalkduster")
+        replayLabel.text = "Replay"
+        replayLabel.fontSize = 40
+        replayLabel.fontColor = SKColor.black
+        replayLabel.position = CGPoint(x: size.width/2, y: size.height/8)
+        addChild(replayLabel)
+        replayLabel.name = "Replay"
     
         
     }

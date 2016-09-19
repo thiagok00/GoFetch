@@ -19,7 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let player = SKSpriteNode(imageNamed: "Girl")
     
-    var catchedBalls = 0
+    var score = 0
     var bones = 3
     var scoreLabel: SKLabelNode!
     var bonesArray = [SKSpriteNode]()
@@ -33,7 +33,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(bgNode)
         
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
-        scoreLabel.text = "\(catchedBalls)"
+        scoreLabel.text = "\(score)"
         scoreLabel.fontSize = 40
         scoreLabel.position = CGPoint(x: size.width/2, y: size.height - 3*scoreLabel.frame.size.height)
         scoreLabel.fontColor = SKColor.black
@@ -114,7 +114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.removeBone()
             if self.bones < 1 {
                 let reveal = SKTransition.fade(withDuration: 1)
-                let gameOverScene = GameOverScene(size: self.size, score: self.catchedBalls)
+                let gameOverScene = GameOverScene(size: self.size, score: self.score)
                 self.view?.presentScene(gameOverScene, transition: reveal)
             }
             
@@ -169,26 +169,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         run(SKAction.playSoundFileNamed("woof.mp3", waitForCompletion: false))
         
-        catchedBalls = catchedBalls + 1
-        scoreLabel.text = "\(catchedBalls)"
+        score = score + 1
+        scoreLabel.text = "\(score)"
         
         
-        //PARTICULAS !!!
-        //abre o arquivo sks
+        //HEARTS
         let path = Bundle.main.path(forResource: "HearthParticle", ofType: "sks")
         let hearthParticle = NSKeyedUnarchiver.unarchiveObject(withFile: path!) as! SKEmitterNode
         
-        //posicao e tamanho
         hearthParticle.targetNode = self.scene
         hearthParticle.position = dog.position
         hearthParticle.xScale = 0.3
         hearthParticle.yScale = 0.3
-        //maximo de coracoes
+    
         hearthParticle.numParticlesToEmit = 10
         
         self.addChild(hearthParticle)
         
-        //da remove parente do emitter pra nao ficar deixando nodes atoa na tela
         let removeHearths = SKAction.sequence([SKAction.wait(forDuration: 2.0), SKAction.run({ hearthParticle.removeFromParent()})])
         run(removeHearths)
         
