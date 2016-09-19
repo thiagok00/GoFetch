@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18C3F3EF1D9060C300516098 /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C3F3EE1D9060C300516098 /* HomeScene.swift */; };
 		D09EBCEA1D9018B2002C55D8 /* HearthParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = D09EBCE91D9018B2002C55D8 /* HearthParticle.sks */; };
 		D0B9597D1D8F3E5000EB598A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9597C1D8F3E5000EB598A /* AppDelegate.swift */; };
 		D0B959831D8F3E5000EB598A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B959821D8F3E5000EB598A /* GameScene.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18C3F3EE1D9060C300516098 /* HomeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScene.swift; sourceTree = "<group>"; };
 		D09EBCE91D9018B2002C55D8 /* HearthParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HearthParticle.sks; sourceTree = "<group>"; };
 		D0B959791D8F3E5000EB598A /* GoFetch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoFetch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B9597C1D8F3E5000EB598A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				D09EBCE91D9018B2002C55D8 /* HearthParticle.sks */,
 				D0B9597C1D8F3E5000EB598A /* AppDelegate.swift */,
+				18C3F3EE1D9060C300516098 /* HomeScene.swift */,
 				D0B959821D8F3E5000EB598A /* GameScene.swift */,
 				D0B9599B1D8F560800EB598A /* GameOverScene.swift */,
 				D0B959941D8F4F0E00EB598A /* Extensions.swift */,
@@ -157,6 +160,7 @@
 				D0B9599C1D8F560800EB598A /* GameOverScene.swift in Sources */,
 				D0B959831D8F3E5000EB598A /* GameScene.swift in Sources */,
 				D0B959851D8F3E5000EB598A /* GameViewController.swift in Sources */,
+				18C3F3EF1D9060C300516098 /* HomeScene.swift in Sources */,
 				D0B9597D1D8F3E5000EB598A /* AppDelegate.swift in Sources */,
 				D0B959951D8F4F0E00EB598A /* Extensions.swift in Sources */,
 			);
