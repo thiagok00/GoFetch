@@ -29,19 +29,35 @@ class GameOverScene: SKScene {
         label.fontColor = SKColor.black
         label.position = CGPoint(x: size.width/2, y: size.height/2)
         addChild(label)
+        label.name = "Replay"
+    
         
-        run(SKAction.sequence([
-            SKAction.wait(forDuration: 3.0),
-            SKAction.run() {
-                let reveal = SKTransition.fade(withDuration: 1.0)
-                let scene = GameScene(size: size)
-                self.view?.presentScene(scene, transition:reveal)
-            }
-            ]))
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        guard let touch = touches.first else {
+            return
+        }
+        let touchLocation = touch.location(in: self)
+        let node = self.atPoint(touchLocation)
+
+        if node.name == "Replay" {
+            self.restartGame()
+        }
+        
         
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func restartGame() {
+        let reveal = SKTransition.fade(withDuration: 1.0)
+        let scene = GameScene(size: size)
+        self.view?.presentScene(scene, transition:reveal)
+    }
+    
+    
 }

@@ -20,8 +20,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let player = SKSpriteNode(imageNamed: "Girl")
     
     var catchedBalls = 0
-    
+    var bones = 3
     var scoreLabel: SKLabelNode!
+    var bonesArray = [SKSpriteNode]()
     
     override func didMove(to view: SKView) {
     
@@ -39,6 +40,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.zPosition = 10
         self.addChild(scoreLabel)
         
+        var i = 0
+        var x:CGFloat = 0
+        while ( i < bones) {
+            let newBone =  SKSpriteNode(imageNamed: "Bone")
+            newBone.zPosition = 15
+            newBone.size = CGSize(width: 298/8,height: 278/8)
+            x = x + newBone.frame.width
+            bonesArray.append(newBone)
+            newBone.position = CGPoint(x: x,y: size.height - newBone.frame.size.height)
+            addChild(newBone)
+            i = i + 1
+        }
+        
         
         player.position = CGPoint(x: size.width * 0.5, y: player.size.height/2)
         player.zPosition = 10
@@ -50,6 +64,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 SKAction.wait(forDuration: 1.0)
                 ])
         ))
+        
+    }
+    
+    func removeBone() {
+        
+        bonesArray[bones-1].removeFromParent()
+        bones = bones - 1
         
     }
     
@@ -90,9 +111,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actionMoveDone = SKAction.removeFromParent()
         
         let loseAction = SKAction.run() {
-            let reveal = SKTransition.fade(withDuration: 1)
-            let gameOverScene = GameOverScene(size: self.size, score: self.catchedBalls)
-            self.view?.presentScene(gameOverScene, transition: reveal)
+            self.removeBone()
+            if self.bones < 1 {
+                let reveal = SKTransition.fade(withDuration: 1)
+                let gameOverScene = GameOverScene(size: self.size, score: self.catchedBalls)
+                self.view?.presentScene(gameOverScene, transition: reveal)
+            }
+            
         }
         dog.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
         
