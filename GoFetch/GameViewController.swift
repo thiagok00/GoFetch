@@ -2,7 +2,7 @@
 //  GameViewController.swift
 //  GoFetch
 //
-//  Created by Thiago De Angelis on 18/09/16.
+//  Created by Ana Luiza Ferrer on 18/09/16.
 //  Copyright © 2016 BEPiD. All rights reserved.
 //
 

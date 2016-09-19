@@ -15,6 +15,7 @@
 		D0B9598D1D8F3E5000EB598A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B9598B1D8F3E5000EB598A /* LaunchScreen.storyboard */; };
 		D0B959951D8F4F0E00EB598A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B959941D8F4F0E00EB598A /* Extensions.swift */; };
 		D0B9599A1D8F541B00EB598A /* woof.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0B959991D8F541B00EB598A /* woof.mp3 */; };
+		D0B9599C1D8F560800EB598A /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9599B1D8F560800EB598A /* GameOverScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D0B9598E1D8F3E5000EB598A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0B959941D8F4F0E00EB598A /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0B959991D8F541B00EB598A /* woof.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woof.mp3; sourceTree = "<group>"; };
+		D0B9599B1D8F560800EB598A /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				D0B9597C1D8F3E5000EB598A /* AppDelegate.swift */,
 				D0B959821D8F3E5000EB598A /* GameScene.swift */,
+				D0B9599B1D8F560800EB598A /* GameOverScene.swift */,
 				D0B959941D8F4F0E00EB598A /* Extensions.swift */,
 				D0B959841D8F3E5000EB598A /* GameViewController.swift */,
 				D0B959861D8F3E5000EB598A /* Main.storyboard */,
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B9599C1D8F560800EB598A /* GameOverScene.swift in Sources */,
 				D0B959831D8F3E5000EB598A /* GameScene.swift in Sources */,
 				D0B959851D8F3E5000EB598A /* GameViewController.swift in Sources */,
 				D0B9597D1D8F3E5000EB598A /* AppDelegate.swift in Sources */,

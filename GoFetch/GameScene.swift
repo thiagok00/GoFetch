@@ -2,7 +2,7 @@
 //  GameScene.swift
 //  GoFetch
 //
-//  Created by Thiago De Angelis on 18/09/16.
+//  Created by Ana Luiza Ferrer on 18/09/16.
 //  Copyright © 2016 BEPiD. All rights reserved.
 //
 
@@ -19,10 +19,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let player = SKSpriteNode(imageNamed: "Girl")
     
+    var catchedBalls = 0
+    
+    var scoreLabel: SKLabelNode!
+    
     override func didMove(to view: SKView) {
     
-        backgroundColor = SKColor.white
+        let bgNode = SKSpriteNode(imageNamed: "Grass")
+        bgNode.size = self.size
+        bgNode.zPosition = -1
+        bgNode.position = CGPoint(x: bgNode.size.width/2, y: bgNode.size.height/2)
+        addChild(bgNode)
+        
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.text = "\(catchedBalls)"
+        scoreLabel.fontSize = 40
+        scoreLabel.position = CGPoint(x: size.width/2, y: size.height - 3*scoreLabel.frame.size.height)
+        scoreLabel.fontColor = SKColor.black
+        scoreLabel.zPosition = 10
+        self.addChild(scoreLabel)
+        
+        
         player.position = CGPoint(x: size.width * 0.5, y: player.size.height/2)
+        player.zPosition = 10
         addChild(player)
         
         run(SKAction.repeatForever(
@@ -44,8 +63,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func addDog() {
         
-        let dog = SKSpriteNode(imageNamed: "Dog1Left")
-        dog.size = CGSize(width: 128/2, height: 152/2)
+        let dog = SKSpriteNode(imageNamed: "DogLeft1")
+        dog.size = CGSize(width: 19*2.5, height: 33*2.5)
+        dog.texture?.filteringMode = .nearest
+        let randomDog = random(min: 1, max: 5)
+        let texture1 = SKTexture(imageNamed: "DogLeft\(randomDog)")
+        let texture2 = SKTexture(imageNamed: "DogRight\(randomDog)")
+        let dogAnimation = SKAction.repeatForever(SKAction.animate(with: [texture1,texture2], timePerFrame: 0.3))
+        
+        dog.run(dogAnimation)
         
         dog.physicsBody = SKPhysicsBody(rectangleOf: dog.size)
         dog.physicsBody?.isDynamic = true
@@ -62,7 +88,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -dog.size.height/2), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
-        dog.run(SKAction.sequence([actionMove, actionMoveDone]))
+        
+        let loseAction = SKAction.run() {
+            let reveal = SKTransition.fade(withDuration: 1)
+            let gameOverScene = GameOverScene(size: self.size, score: self.catchedBalls)
+            self.view?.presentScene(gameOverScene, transition: reveal)
+        }
+        dog.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
         
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
@@ -106,11 +138,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func ballDidCollideWithDog(ball:SKSpriteNode, dog:SKSpriteNode) {
-        print("Catch")
+        
         ball.removeFromParent()
         dog.removeFromParent()
         
         run(SKAction.playSoundFileNamed("woof.mp3", waitForCompletion: false))
+        
+        catchedBalls = catchedBalls + 1
+        scoreLabel.text = "\(catchedBalls)"
+
+        
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
