@@ -85,5 +85,4 @@ class GameOverScene: SKScene {
         self.view?.presentScene(scene, transition:reveal)
     }
     
-    
 }

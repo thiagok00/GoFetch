@@ -39,8 +39,10 @@ class HomeScene: SKScene {
         
         run(SKAction.repeatForever(
             SKAction.sequence([
-                SKAction.run(addDog),
-                SKAction.wait(forDuration: 5.0)
+                SKAction.run(addDogLeft),
+                SKAction.wait(forDuration: 6.0),
+                SKAction.run(addDogRight),
+                SKAction.wait(forDuration: 6.0)
                 ])
         ))
         
@@ -76,7 +78,7 @@ class HomeScene: SKScene {
         return random() * (max - min) + min
     }
     
-    func addDog() {
+    func addDogLeft() {
         
         let dog = SKSpriteNode(imageNamed: "WalkLeft1.1")
         dog.size = CGSize(width: 147/1.5, height: 107/1.5)
@@ -99,6 +101,33 @@ class HomeScene: SKScene {
         let actionMove = SKAction.move(to: CGPoint(x: -dog.size.width/2, y: actualY), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
     
+        dog.run(SKAction.sequence([actionMove, actionMoveDone]))
+        
+    }
+    
+    func addDogRight() {
+        
+        let dog = SKSpriteNode(imageNamed: "WalkRight1.1")
+        dog.size = CGSize(width: 147/1.5, height: 107/1.5)
+        dog.zPosition = 15
+        dog.texture?.filteringMode = .nearest
+        let randomDog = Int(random(min: 1, max: 5))
+        let texture1 = SKTexture(imageNamed: "WalkRight\(randomDog).1")
+        let texture2 = SKTexture(imageNamed: "WalkRight\(randomDog).2")
+        let dogAnimation = SKAction.repeatForever(SKAction.animate(with: [texture1,texture2], timePerFrame: 0.3))
+        
+        dog.run(dogAnimation)
+        
+        let actualY = random(min: size.height - dog.size.height/2, max: dog.size.height/2)
+        
+        dog.position = CGPoint(x: -dog.size.width, y: actualY)
+        addChild(dog)
+        
+        let actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
+        
+        let actionMove = SKAction.move(to: CGPoint(x: size.width + dog.size.width/2, y: actualY), duration: TimeInterval(actualDuration))
+        let actionMoveDone = SKAction.removeFromParent()
+        
         dog.run(SKAction.sequence([actionMove, actionMoveDone]))
         
     }
